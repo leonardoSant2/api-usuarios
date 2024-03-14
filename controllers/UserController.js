@@ -1,6 +1,7 @@
 const { text } = require("body-parser");
 const { findEmail } = require("../models/User");
-var User = require("../models/User")
+var User = require("../models/User");
+var PasswordToken = require("../models/PasswordTokens");
 class UserController{
 
     async index(req, res){
@@ -68,6 +69,19 @@ class UserController{
             res.status(406);
             res.send(result.err);
         }
+    }
+
+    async recoverPassword(req,res){
+        var email = req.body.email;
+        var result = await PasswordToken.create(email);
+        if (result.status) {
+            res.status(200);
+            res.send("" + result.token);
+        } else {
+            res.status(406);
+            res.send(result.err);
+        }
+
     }
 }
 

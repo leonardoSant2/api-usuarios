@@ -103,7 +103,7 @@ class User{
 
     async findByEmail(email){
         try {
-            var result = await knex.select(["id","name","email","role"]).where({email:email}).table("users");
+            var result = await knex.select(["id","name","email","role","name"]).where({email:email}).table("users");
             if (result.length > 0) {
                 return result[0];
             }else{
@@ -113,6 +113,12 @@ class User{
             console.log(error);
             return [];
         }
+    }
+
+    async changePassword(newPassword,id,token){
+        var hash = await bcrypt.hash(newPassword, 10);
+        await knex.update({password: hash}).where({id: id}).table("users");
+        await knex.update({used: 1}).where(({token: token})).table("passwordtokens");
     }
 }
 

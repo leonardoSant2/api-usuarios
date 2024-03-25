@@ -18,12 +18,12 @@ module.exports = function(req, res, next){
              res.send("Você não tem permisão para isso");   
             }
          } catch (error) {
-            res.status(403);
+            res.status(401);
             res.send("Você não está autenticado");
             return;
          }
     } else {
-        res.status(403);
+        res.status(401);
         res.send("Você não está autenticado");
         return;
     }

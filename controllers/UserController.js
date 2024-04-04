@@ -14,8 +14,8 @@ class UserController{
 
     async create(req, res){
         var {email, name, password} = req.body;
-        if (email == undefined) {
-            res.status(403);
+        if (email == undefined || email == '' || email == ' ') {
+            res.status(400);
             res.json({Erro: "o e-mail é inválido!"})
             return;
         }

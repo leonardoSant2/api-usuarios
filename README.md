@@ -98,6 +98,12 @@ Exemplo:
 #### Respostas
 ##### OK! 200
 Requisição feita com sucesso. O usuário foi cadastrado com sucesso.
+##### Bad Request 400
+Indica que o servidor não pode concluir a requisição devido algum erro do cliente, nesse caso o e-mail informado é inválido.  
+Exemplo de resposta:
+```
+O e-mail é inválido!
+```
 ##### Unauthorized 401
 Significa que aconteceu alguma falha no processo de autenticação. Motivos: Senha e e-mail incorretos ou usuário não fez o login.  
 Exemplo de resposta:

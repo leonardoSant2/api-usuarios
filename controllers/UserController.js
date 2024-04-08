@@ -122,7 +122,8 @@ class UserController{
             res.send("Senha incorreta");    
             }
         } else {
-            res.json({status: false});
+            res.status(406);
+            res.json({status: false, err: "O usuário não existe!"});
         }
     }
 }

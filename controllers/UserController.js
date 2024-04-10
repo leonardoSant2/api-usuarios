@@ -126,6 +126,10 @@ class UserController{
             res.json({status: false, err: "O usuário não existe!"});
         }
     }
+
+    async validate(req, res){
+        res.send("Ok");
+    }
 }
 
 module.exports = new UserController();
